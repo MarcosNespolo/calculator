@@ -1,0 +1,108 @@
+.calculatorContainer{
+  padding: 3rem 4rem;
+  width: 26.5rem;
+  height: 100vh;
+
+  background-color: var(--gray-800);
+  color: var(--white);
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+  strong{
+    font-weight: 600; 
+  }
+
+  .infoPedidos{
+    align-self: stretch;
+    font-size: 1rem;
+
+    header{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+  
+      img{
+        margin-bottom: 4rem;
+      }
+    }
+
+    .formControl{
+      display: flex !important;
+    }
+
+    .multiSelect{
+      display: flex !important;
+      flex: 1 !important;
+
+
+      &:before{
+        border-bottom: 1px solid var(--white) !important;
+        color: var(--white) !important;
+      }
+      &:after{
+        border-bottom: 1px solid var(--green-logo)  !important;
+        color: var(--green-logo) !important;
+      }
+      div{
+        flex: 1 !important;
+      }
+      path{
+        color: var(--green-logo) !important;
+      }
+    }
+
+    .numTransportadoras{
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .numPedidos{
+      display: block;
+      margin-top: 3rem;
+    }
+    .pedidos{
+      margin-top: 1rem;
+      align-items: center;
+      gap: 0.5rem;
+      
+      .sliderContainer{
+        flex: 1;
+      }
+  
+      span{
+        position: relative;
+        top: 1rem;
+  
+        &:last-child{
+          float: right;
+        }
+      }
+    }
+    .costFinalContainer{
+      margin-top: 4rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .costFinalLabel{
+        font-size: 1.2rem;
+      }
+      .costFinal{
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        line-height: 1rem;
+
+        &:last-child{
+          margin-top: 0.2rem;
+          margin-left: auto;
+        }
+      }
+    }
+  }
+
+}
