@@ -35,30 +35,42 @@ function getStyles(name, personName, theme) {
         : theme.typography.fontWeightMedium,
   };
 }
+
+// TODO: fetch from API: https://www.linkyouweb.com.br/api/integration/courriers/companies
 const transpotadoras = [
-  "Correios",
-  "Jadlog",
-  "Total Express",
-  "Carriers",
-  "Rede Sul",
-  "Jamef",
-  "Braspress",
-  "Elohim",
-  "DBA Express",
-  "Pot Speed",
-  "B2Log",
-  "Rodoê",
-  "Direcional",
-  "Pacífico",
-  "Plimor",
-  "Patrus",
-  "Expresso São Miguel",
-  "DLog",
-  "OnTime",
+  "Atual Cargas",
   "Azul",
-  "TW Transportes",
+  "B2Log",
+  "Braspress",
+  "Bristot Rocha Transportes",
+  "Carriers",
+  "Correios",
+  "DBA Express",
+  "Daytona Express",
+  "Direcional",
+  "Dlog",
+  "Elohim",
+  "Expresso São Miguel",
+  "FSR/TransSD Transporte",
+  "Jadlog",
+  "Jamef",
   "Lafe Express",
-  "Rodomaxlog"
+  "Nowlog",
+  "OnTime",
+  "Pacífico",
+  "Patrus",
+  "Plimor",
+  "PotSpeed",
+  "Rede Sul",
+  "Rodomaxlog",
+  "Rodonaves",
+  "Rodoê",
+  "Sunorte Transportes",
+  "TNT Mercúrio",
+  "TSV Logística",
+  "TW Transportes",
+  "Total Express",
+  "Transoliveira Transportes"
 ]
 
 export default function Calculator() {
@@ -89,7 +101,7 @@ export default function Calculator() {
 
   useEffect(() => {
     if (numPedidos > 0 && contTransportadoras > 0) {
-      api.get(`tracking?monthlyOrders=${numPedidosApi}&courrierCompanies=${contTransportadoras}`)
+      api.get(`pricing/tracking?monthlyOrders=${numPedidosApi}&courrierCompanies=${contTransportadoras}`)
         .then(response => {
           setValor(response.data.montlhyCost.toFixed(2));
           setValorPedido(response.data.orderCost.toFixed(2));
