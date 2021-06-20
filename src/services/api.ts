@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://backend-gabrielsestrem.vercel.app/api/pricing/',
+  baseURL: 'https://www.linkyouweb.com.br/api/',
   headers: {
     'Content-Type': 'application/json',
   },
