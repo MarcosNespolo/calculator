@@ -37,20 +37,20 @@ function getStyles(name, personName, theme) {
 }
 
 // TODO: fetch from API: https://www.linkyouweb.com.br/api/integration/courriers/companies
-const transpotadoras = [
+const transportadoras = [
   "Atual Cargas",
   "Azul",
+  "Transoliveira Transportes",
   "B2Log",
   "Braspress",
   "Bristot Rocha Transportes",
   "Carriers",
   "Correios",
+  "Rodonaves",
   "DBA Express",
   "Daytona Express",
-  "Direcional",
   "Dlog",
   "Elohim",
-  "Expresso São Miguel",
   "FSR/TransSD Transporte",
   "Jadlog",
   "Jamef",
@@ -63,15 +63,19 @@ const transpotadoras = [
   "PotSpeed",
   "Rede Sul",
   "Rodomaxlog",
-  "Rodonaves",
+  "Direcional",
   "Rodoê",
   "Sunorte Transportes",
+  "Expresso São Miguel",
   "TNT Mercúrio",
   "TSV Logística",
   "TW Transportes",
   "Total Express",
-  "Transoliveira Transportes"
+  
 ]
+
+transportadoras.sort();
+
 
 export default function Calculator() {
   const [contTransportadoras, setContTransportadora] = useState(0);
@@ -116,7 +120,7 @@ export default function Calculator() {
     <div className={styles.calculatorContainer}>
       <div className={styles.infoPedidos}>
         <header>
-          <img width="40px" height="40px" src="/chaingreen.png" alt="LinkYou" />
+          <img width="40px" height="40px" src="/newLogo.png" alt="LinkYou" />
         </header>
         <FormControl className={styles.formControl}>
           <span className={styles.numTransportadoras}>{contTransportadoras} {contTransportadoras == 1 ? ('Transportadora') : ('Transportadoras')}</span>
@@ -134,7 +138,7 @@ export default function Calculator() {
             )}
             MenuProps={MenuProps}
           >
-            {transpotadoras.map((name) => (
+            {transportadoras.map((name) => (
               <MenuItem key={name} value={name} style={getStyles(name, transportadoraName, theme)}>
                 {name}
               </MenuItem>
@@ -149,7 +153,7 @@ export default function Calculator() {
             <Slider
               trackStyle={{ backgroundColor: '#fff' }}
               railStyle={{ backgroundColor: '#777' }}
-              handleStyle={{ borderColor: '#94aa44', borderWidth: 4 }}
+              handleStyle={{ borderColor: '#289583', borderWidth: 4 }}
               className={styles.slider}
               step={50}
               min={minPedidos}
