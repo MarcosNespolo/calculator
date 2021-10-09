@@ -37,45 +37,6 @@ function getStyles(name, personName, theme) {
 }
 
 // TODO: fetch from API: https://www.linkyouweb.com.br/api/integration/courriers/companies
-const transportadoras = [
-  "Atual Cargas",
-  "Azul",
-  "Transoliveira Transportes",
-  "B2Log",
-  "Braspress",
-  "Bristot Rocha Transportes",
-  "Carriers",
-  "Correios",
-  "Rodonaves",
-  "DBA Express",
-  "Daytona Express",
-  "Dlog",
-  "Elohim",
-  "FSR/TransSD Transporte",
-  "Jadlog",
-  "Jamef",
-  "Lafe Express",
-  "Nowlog",
-  "OnTime",
-  "Pacífico",
-  "Patrus",
-  "Plimor",
-  "PotSpeed",
-  "Rede Sul",
-  "Rodomaxlog",
-  "Direcional",
-  "Rodoê",
-  "Sunorte Transportes",
-  "Expresso São Miguel",
-  "TNT Mercúrio",
-  "TSV Logística",
-  "TW Transportes",
-  "Total Express",
-  
-]
-
-transportadoras.sort();
-
 
 export default function Calculator() {
   const [contTransportadoras, setContTransportadora] = useState(0);
@@ -84,6 +45,7 @@ export default function Calculator() {
   const [numPedidosApi, setNumPedidosApi] = useState(500);
   const [valor, setValor] = useState(0);
   const [valorPedido, setValorPedido] = useState(0);
+  const [transportadoras, setTransportadoras] = useState([]);
   const minPedidos = 0;
   const maxPedidos = 5000;
   const ITEM_HEIGHT = 48;
@@ -116,6 +78,16 @@ export default function Calculator() {
     }
   }, [contTransportadoras, numPedidosApi]);
 
+  useEffect(() => {
+      const response = async() => {
+      const transportadorasResponse = await fetch('https://www.linkyouweb.com.br/api/integration/courriers/companies')
+      const transp = await transportadorasResponse.json()
+      setTransportadoras(transp)
+    }
+    response()
+  }, []);
+  
+
   return (
     <div className={styles.calculatorContainer}>
       <div className={styles.infoPedidos}>
@@ -142,7 +114,7 @@ export default function Calculator() {
               <MenuItem key={name} value={name} style={getStyles(name, transportadoraName, theme)}>
                 {name}
               </MenuItem>
-            ))}
+            )).sort()}
           </Select>
         </FormControl>
 
